@@ -18,9 +18,7 @@ def save_color_wheel(radius, v, file_path):
             ry = y - cy
             s = (rx**2.0 + ry**2.0) ** 0.5 / args.radius
             if s <= 1.0:
-                deg = math.degrees(math.atan2(rx, -1 * ry))
-                deg = deg if deg > 0 else 360 + deg
-                h = deg / 360.0
+                h = (math.atan2(-rx, ry) + math.pi) / (math.pi * 2)
                 rgb = colorsys.hsv_to_rgb(h, s, v)
                 pix[x, y] = tuple([int(round(c * 255.0)) for c in rgb])
 
