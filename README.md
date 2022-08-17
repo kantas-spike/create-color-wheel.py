@@ -18,6 +18,8 @@ options:
   --start START         作成対象の明度範囲の開始値(default: 0)
   --end END             作成対象の明度範囲の終了値(default: 1.0)
   --step STEP           作成対象の明度範囲の間隔(default: 0.1)
+  --append-values values [values ...]
+                        作成対象の明度範囲の間隔(default: [])
   --filename FILENAME   作成する画像のファイル名。置換フィールドを指定可能(default: 'wheel_{:0.2f}.png')
   --outputdir OUTPUTDIR
                         作成する画像を保存するディレクトリ(default: './imgs')

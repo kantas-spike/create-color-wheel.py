@@ -30,6 +30,7 @@ if __name__ == "__main__":
     DEFAULT_VALUE_START = 0
     DEFAULT_VALUE_END = 1.0
     DEFAULT_VALUE_STEP = 0.1
+    DEFAULT_APPEND_VALUES = []
     DEFAULT_FILE_PATTERN = "wheel_{:0.2f}.png"
     DEFAULT_OUTPUTDIR = "./imgs"
     parser = argparse.ArgumentParser(description="指定した明度(V)の範囲の色相環をまとめて作成する")
@@ -61,6 +62,15 @@ if __name__ == "__main__":
         default=DEFAULT_VALUE_STEP,
         help=f"作成対象の明度範囲の間隔(default: {DEFAULT_VALUE_STEP})",
     )
+    # v_additional_values
+    parser.add_argument(
+        "--append-values",
+        type=float,
+        metavar="values",
+        default=DEFAULT_APPEND_VALUES,
+        nargs="+",
+        help=f"作成対象の明度範囲の間隔(default: {DEFAULT_APPEND_VALUES})",
+    )
     # filename pattern
     parser.add_argument(
         "--filename",
@@ -85,6 +95,8 @@ if __name__ == "__main__":
         os.makedirs(output_dir)
 
     file_pattern = os.path.join(output_dir, args.filename)
+    values = list(np.arange(args.start, args.end + args.step, args.step))
+    values.extend(args.append_values)
 
-    for v in np.arange(args.start, args.end + args.step, args.step):
-        save_color_wheel(args.radius, v, file_pattern.format(v))
+    for v in values:
+        save_color_wheel(args.radius, v, file_pattern.format(v), args.color)
