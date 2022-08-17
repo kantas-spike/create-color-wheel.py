@@ -6,7 +6,7 @@ import numpy as np
 import os
 
 
-def save_color_wheel(radius, v, file_path):
+def save_color_wheel(radius, v, file_path, color_scheme):
     h = w = args.radius * 2
     im = Image.new("RGBA", (h, w), (0, 0, 0, 0))
     cx, cy = im.size[0] / 2, im.size[1] / 2
@@ -19,7 +19,10 @@ def save_color_wheel(radius, v, file_path):
             s = (rx**2.0 + ry**2.0) ** 0.5 / args.radius
             if s <= 1.0:
                 h = (math.atan2(-rx, ry) + math.pi) / (math.pi * 2)
-                rgb = colorsys.hsv_to_rgb(h, s, v)
+                if color_scheme == "hls":
+                    rgb = colorsys.hls_to_rgb(h, v, s)
+                else:
+                    rgb = colorsys.hsv_to_rgb(h, s, v)
                 pix[x, y] = tuple([int(round(c * 255.0)) for c in rgb])
 
     im.save(file_path, quality=95)
@@ -33,6 +36,7 @@ if __name__ == "__main__":
     DEFAULT_APPEND_VALUES = []
     DEFAULT_FILE_PATTERN = "wheel_{:0.2f}.png"
     DEFAULT_OUTPUTDIR = "./imgs"
+    DEFAULT_COLOR_SCHEME = "hls"
     parser = argparse.ArgumentParser(description="指定した明度(V)の範囲の色相環をまとめて作成する")
     # radius
     parser.add_argument(
@@ -86,6 +90,14 @@ if __name__ == "__main__":
         metavar="OUTPUTDIR",
         default=DEFAULT_OUTPUTDIR,
         help=f"作成する画像を保存するディレクトリ(default: '{DEFAULT_OUTPUTDIR}')",
+    )
+    # color scheme
+    parser.add_argument(
+        "--color",
+        type=str,
+        metavar="COLOR_SCHEME",
+        default=DEFAULT_COLOR_SCHEME,
+        help=f"カラーホイールのカラースキーム名(hls or hsv) (default: '{DEFAULT_COLOR_SCHEME}')",
     )
 
     args = parser.parse_args()
