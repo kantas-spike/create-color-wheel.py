@@ -39,9 +39,9 @@ wheel_0.00.png  wheel_0.10.png  wheel_0.20.png  wheel_0.30.png  wheel_0.40.png  
 
 #### 作成された色相環の例
 
-|明度 1.00|明度 0.80|明度 0.60|明度 0.40|
+|明度 1.00|明度 0.80|明度 0.50|明度 0.30|
 |:---:|:---:|:---:|:---:|
-|![wheel_1.00.png](sample_imgs/wheel_1.00.png)|![wheel_0.80.png](sample_imgs/wheel_0.80.png)|![wheel_0.60.png](sample_imgs/wheel_0.60.png)|![wheel_0.40.png](sample_imgs/wheel_0.40.png)|
+|![wheel_1.00.png](sample_imgs/wheel_1.00.png)|![wheel_0.80.png](sample_imgs/wheel_0.80.png)|![wheel_0.50.png](sample_imgs/wheel_0.50.png)|![wheel_0.40.png](sample_imgs/wheel_0.30.png)|
 
 ### HLS形式指定時
 
@@ -53,9 +53,9 @@ wheel_0.00.png  wheel_0.10.png  wheel_0.20.png  wheel_0.30.png  wheel_0.40.png  
 
 #### 作成された色相環の例
 
-|明度 1.00|明度 0.80|明度 0.60|明度 0.40|
+|明度 1.00|明度 0.80|明度 0.50|明度 0.30|
 |:---:|:---:|:---:|:---:|
-|![wheel_1.00.png](images/wheel_1.00.png)|![wheel_0.80.png](images/wheel_0.80.png)|![wheel_0.60.png](images/wheel_0.60.png)|![wheel_0.40.png](images/wheel_0.40.png)|
+|![wheel_1.00.png](images/wheel_1.00.png)|![wheel_0.80.png](images/wheel_0.80.png)|![wheel_0.50.png](images/wheel_0.50.png)|![wheel_0.30.png](images/wheel_0.30.png)|
 
 
 ## 環境構築
