@@ -2,7 +2,6 @@ from PIL import Image
 import colorsys
 import math
 import argparse
-import numpy as np
 import os
 
 
@@ -64,7 +63,7 @@ if __name__ == "__main__":
         type=float,
         metavar="STEP",
         default=DEFAULT_VALUE_STEP,
-        help=f"作成対象の明度範囲の間隔(default: {DEFAULT_VALUE_STEP})",
+        help=f"作成対象の明度範囲の間隔(default: {DEFAULT_VALUE_STEP}, 小数点以下2桁まで指定可能)",
     )
     # v_additional_values
     parser.add_argument(
@@ -107,7 +106,12 @@ if __name__ == "__main__":
         os.makedirs(output_dir)
 
     file_pattern = os.path.join(output_dir, args.filename)
-    values = list(np.arange(args.start, args.end + args.step, args.step))
+    values = []
+    i = args.start
+    while round(i, 2) < round(args.end + args.step, 2):
+        values.append(round(i, 2))
+        i = round(i + args.step, 2)
+
     values.extend(args.append_values)
 
     for v in values:
