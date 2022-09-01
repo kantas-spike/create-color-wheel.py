@@ -3,7 +3,7 @@ import colorsys
 import math
 import argparse
 import os
-
+import numpy as np
 
 def save_color_wheel(radius, v, file_path, color_scheme):
     h = w = args.radius * 2
@@ -106,12 +106,7 @@ if __name__ == "__main__":
         os.makedirs(output_dir)
 
     file_pattern = os.path.join(output_dir, args.filename)
-    values = []
-    i = args.start
-    while round(i, 2) < round(args.end + args.step, 2):
-        values.append(round(i, 2))
-        i = round(i + args.step, 2)
-
+    values = list(np.arange(args.start, args.end + args.step, args.step))
     values.extend(args.append_values)
 
     for v in values:
